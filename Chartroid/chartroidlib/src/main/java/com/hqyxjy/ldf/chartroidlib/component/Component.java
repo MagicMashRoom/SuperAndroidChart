@@ -10,43 +10,43 @@ import android.graphics.Typeface;
 import com.hqyxjy.ldf.chartroidlib.utils.UserInterfaceUtils;
 
 /**
- * This class encapsulates everything both AxisBase, Legend and LimitLines have in common.
+ * This class encapsulates everything both Axis, Legend and LimitLines have in common.
  *
  * @author Philipp Jahoda
  */
-public abstract class ComponentBase {
+public abstract class Component {
 
     /**
      * flag that indicates if this axis / legend is enabled or not
      */
-    protected boolean mEnabled = true;
+    protected boolean enabled = true;
 
     /**
      * the offset in pixels this axis labels have on the x-axis
      */
-    protected float mXOffset = 5f;
+    protected float XOffset = 5f;
 
     /**
      * the offset in pixels this axis labels have on the Y-axis
      */
-    protected float mYOffset = 5f;
+    protected float YOffset = 5f;
 
     /**
      * the typeface used for the labels
      */
-    protected Typeface mTypeface = null;
+    protected Typeface typeface = null;
 
     /**
      * the text size of the labels
      */
-    protected float mTextSize = 10f;
+    protected float textSize = 10f;
 
     /**
      * the text color to use for the labels
      */
-    protected int mTextColor = Color.BLACK;
+    protected int textColor = Color.BLACK;
 
-    public ComponentBase() {
+    public Component() {
 
     }
 
@@ -57,7 +57,7 @@ public abstract class ComponentBase {
      * @return
      */
     public float getXOffset() {
-        return mXOffset;
+        return XOffset;
     }
 
     /**
@@ -66,7 +66,7 @@ public abstract class ComponentBase {
      * @param xOffset
      */
     public void setXOffset(float xOffset) {
-        mXOffset = UserInterfaceUtils.dp2px(xOffset);
+        this.XOffset = UserInterfaceUtils.dp2px(xOffset);
     }
 
     /**
@@ -76,7 +76,7 @@ public abstract class ComponentBase {
      * @return
      */
     public float getYOffset() {
-        return mYOffset;
+        return YOffset;
     }
 
     /**
@@ -87,7 +87,7 @@ public abstract class ComponentBase {
      * @param yOffset
      */
     public void setYOffset(float yOffset) {
-        mYOffset = UserInterfaceUtils.dp2px(yOffset);
+        YOffset = UserInterfaceUtils.dp2px(yOffset);
     }
 
     /**
@@ -96,7 +96,7 @@ public abstract class ComponentBase {
      * @return
      */
     public Typeface getTypeface() {
-        return mTypeface;
+        return typeface;
     }
 
     /**
@@ -105,7 +105,7 @@ public abstract class ComponentBase {
      * @param tf
      */
     public void setTypeface(Typeface tf) {
-        mTypeface = tf;
+        typeface = tf;
     }
 
     /**
@@ -121,7 +121,7 @@ public abstract class ComponentBase {
         if (size < 6f)
             size = 6f;
 
-        mTextSize = UserInterfaceUtils.dp2px(size);
+        textSize = UserInterfaceUtils.dp2px(size);
     }
 
     /**
@@ -130,7 +130,7 @@ public abstract class ComponentBase {
      * @return
      */
     public float getTextSize() {
-        return mTextSize;
+        return textSize;
     }
 
     /**
@@ -140,7 +140,7 @@ public abstract class ComponentBase {
      * @param color
      */
     public void setTextColor(int color) {
-        mTextColor = color;
+        textColor = color;
     }
 
     /**
@@ -149,7 +149,7 @@ public abstract class ComponentBase {
      * @return
      */
     public int getTextColor() {
-        return mTextColor;
+        return textColor;
     }
 
     /**
@@ -160,7 +160,7 @@ public abstract class ComponentBase {
      * @param enabled
      */
     public void setEnabled(boolean enabled) {
-        mEnabled = enabled;
+        this.enabled = enabled;
     }
 
     /**
@@ -169,6 +169,6 @@ public abstract class ComponentBase {
      * @return
      */
     public boolean isEnabled() {
-        return mEnabled;
+        return enabled;
     }
 }

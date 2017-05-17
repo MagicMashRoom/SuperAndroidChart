@@ -5,6 +5,9 @@ package com.hqyxjy.ldf.chartroidlib.component;
  */
 
 public class YAxis extends Axis{
+    public enum AxisDependency {
+        LEFT , RIGHT
+    }
     @Override
     public String getLongestLabel() {
         return null;

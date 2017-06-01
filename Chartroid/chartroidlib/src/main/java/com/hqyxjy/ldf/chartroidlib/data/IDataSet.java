@@ -60,16 +60,16 @@ public interface IDataSet<T extends Entry> {
     T getEntryForXIndex(int xIndex, DataSet.Rounding rounding);
 
     /**
-     * Returns the first Entry object found at the given xIndex with binary
+     * Returns the first Entry object found at the given position with binary
      * search. If the no Entry at the specified x-index is found, this method
      * returns the index at the closest x-index. Returns null if no Entry object
      * at that index. INFORMATION: This method does calculations at runtime. Do
      * not over-use in performance critical situations.
      *
-     * @param xIndex
+     * @param position
      * @return
      */
-    T getEntryForXIndex(int xIndex);
+    T getEntryForXIndex(int position);
 
     /**
      * Returns all Entry objects found at the given xIndex with binary
@@ -101,7 +101,7 @@ public interface IDataSet<T extends Entry> {
      * @param rounding determine to round up/down/closest if there is no Entry matching the provided x-index
      * @return
      */
-    int getEntryIndex(int xIndex, DataSet.Rounding rounding);
+    int getEntryIndex(float xIndex, DataSet.Rounding rounding);
 
     /**
      * Returns the position of the provided entry in the DataSets Entry array.

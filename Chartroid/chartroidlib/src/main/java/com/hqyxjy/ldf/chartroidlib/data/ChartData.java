@@ -7,4 +7,5 @@ import com.hqyxjy.ldf.chartroidlib.component.Entry;
  */
 
 public abstract class ChartData<T extends IDataSet<? extends Entry>>{
+
 }

@@ -9,9 +9,9 @@ import android.os.Parcelable;
  */
 
 public class Entry implements Parcelable{
-    private float val;
-    private int xIndex;
-    private Object data;
+    private float yVal;
+    private float xVal;
+    private Object attachment;// 附件
 
     public Entry() {
     }
@@ -19,36 +19,34 @@ public class Entry implements Parcelable{
     /**
      * A Entry represents one single entry in the chart.
      *
-     * @param val the y value (the actual value of the entry)
-     * @param xIndex the corresponding index in the x value array (index on the
-     *            x-axis of the chart, must NOT be higher than the length of the
-     *            x-values String array)
+     * @param yVal the y value (the actual value of the entry)
+     * @param xVal 对应X轴值的链表中的index，所以此数值不能超过X轴链表的长度
      */
-    public Entry(float val, int xIndex) {
-        this.val = val;
-        this.xIndex = xIndex;
+    public Entry(float yVal, float xVal) {
+        this.yVal = yVal;
+        this.xVal = xVal;
     }
 
     /**
      * A Entry represents one single entry in the chart.
      *
-     * @param val the y value (the actual value of the entry)
-     * @param xIndex the corresponding index in the x value array (index on the
+     * @param yVal the y value (the actual value of the entry)
+     * @param xVal the corresponding index in the x value array (index on the
      *            x-axis of the chart, must NOT be higher than the length of the
      *            x-values String array)
-     * @param data Spot for additional data this Entry represents.
+     * @param data Spot for additional attachment this Entry represents.
      */
-    public Entry(float val, int xIndex, Object data) {
-        this(val, xIndex);
-        this.data = data;
+    public Entry(float yVal, float xVal, Object data) {
+        this(yVal, xVal);
+        this.attachment = data;
     }
     /**
      * returns the x-index the value of this object is mapped to
      *
      * @return
      */
-    public int getXIndex() {
-        return xIndex;
+    public float getXVal() {
+        return xVal;
     }
 
     /**
@@ -56,8 +54,8 @@ public class Entry implements Parcelable{
      *
      * @param x
      */
-    public void setXIndex(int x) {
-        this.xIndex = x;
+    public void setXVal(int x) {
+        this.xVal = x;
     }
 
     /**
@@ -65,36 +63,36 @@ public class Entry implements Parcelable{
      *
      * @return
      */
-    public float getVal() {
-        return val;
+    public float getYVal() {
+        return yVal;
     }
 
     /**
      * Sets the value for the entry.
      *
-     * @param val
+     * @param yVal
      */
-    public void setVal(float val) {
-        this.val = val;
+    public void setYVal(float yVal) {
+        this.yVal = yVal;
     }
 
     /**
-     * Returns the data, additional information that this Entry represents, or
-     * null, if no data has been specified.
+     * Returns the attachment, additional information that this Entry represents, or
+     * null, if no attachment has been specified.
      *
      * @return
      */
-    public Object getData() {
-        return data;
+    public Object getAttachment() {
+        return attachment;
     }
 
     /**
-     * Sets additional data this Entry should represent.
+     * Sets additional attachment this Entry should represent.
      *
-     * @param data
+     * @param attachment
      */
-    public void setData(Object data) {
-        this.data = data;
+    public void setAttachment(Object attachment) {
+        this.attachment = attachment;
     }
 
     /**
@@ -103,12 +101,12 @@ public class Entry implements Parcelable{
      * @return
      */
     public Entry copy() {
-        Entry e = new Entry(val, xIndex, data);
+        Entry e = new Entry(yVal, xVal, attachment);
         return e;
     }
 
     /**
-     * Compares value, xIndex and data of the entries. Returns true if entries
+     * Compares value, xVal and attachment of the entries. Returns true if entries
      * are equal in those points, false if not. Does not check by hash-code like
      * it's done by the "equals" method.
      *
@@ -120,12 +118,12 @@ public class Entry implements Parcelable{
         if (e == null)
             return false;
 
-        if (e.data != this.data)
+        if (e.attachment != this.attachment)
             return false;
-        if (e.xIndex != this.xIndex)
+        if (e.xVal != this.xVal)
             return false;
 
-        if (Math.abs(e.val - this.val) > 0.00001f)
+        if (Math.abs(e.yVal - this.yVal) > 0.00001f)
             return false;
 
         return true;
@@ -136,7 +134,7 @@ public class Entry implements Parcelable{
      */
     @Override
     public String toString() {
-        return "Entry, xIndex: " + xIndex + " val (sum): " + getVal();
+        return "Entry, xVal: " + xVal + " yVal (sum): " + getYVal();
     }
 
     @Override
@@ -146,14 +144,14 @@ public class Entry implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeFloat(this.val);
-        dest.writeInt(this.xIndex);
-        if (data != null) {
-            if (data instanceof Parcelable) {
+        dest.writeFloat(this.yVal);
+        dest.writeFloat(this.xVal);
+        if (attachment != null) {
+            if (attachment instanceof Parcelable) {
                 dest.writeInt(1);
-                dest.writeParcelable((Parcelable) this.data, flags);
+                dest.writeParcelable((Parcelable) this.attachment, flags);
             } else {
-                throw new ParcelFormatException("Cannot parcel an Entry with non-parcelable data");
+                throw new ParcelFormatException("Cannot parcel an Entry with non-parcelable attachment");
             }
         } else {
             dest.writeInt(0);
@@ -161,9 +159,9 @@ public class Entry implements Parcelable{
     }
 
     protected Entry(Parcel in) {
-        this.val = in.readFloat();
-        this.xIndex = in.readInt();
-        this.data = in.readParcelable(Object.class.getClassLoader());
+        this.yVal = in.readFloat();
+        this.xVal = in.readInt();
+        this.attachment = in.readParcelable(Object.class.getClassLoader());
     }
 
     public static final Creator<Entry> CREATOR = new Creator<Entry>() {

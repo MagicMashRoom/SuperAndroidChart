@@ -339,7 +339,7 @@ public abstract class BaseDataSet <T extends Entry> implements IDataSet<T> {
     public int getIndexInEntries(int xIndex) {
 
         for (int i = 0; i < getEntryCount(); i++) {
-            if (xIndex == getEntryForIndex(i).getXIndex())
+            if (xIndex == getEntryForIndex(i).getXVal())
                 return i;
         }
 

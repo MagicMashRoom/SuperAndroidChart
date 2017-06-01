@@ -17,6 +17,7 @@ public interface OnChartGestureListener {
 
     /**
      * Callbacks when a touch-gesture has ended on the Chart (ACTION_UP, ACTION_CANCEL)
+     * So onChartGestureEnd will call with onChartGestureStart in pair
      *
      * @param me
      * @param lastPerformedGesture

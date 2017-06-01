@@ -5,4 +5,8 @@ package com.hqyxjy.ldf.chartroidlib.component;
  */
 
 public class XAxis extends Axis{
+    @Override
+    public String getLongestLabel() {
+        return null;
+    }
 }

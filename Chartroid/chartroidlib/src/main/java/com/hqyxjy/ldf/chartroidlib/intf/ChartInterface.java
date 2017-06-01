@@ -3,8 +3,8 @@ package com.hqyxjy.ldf.chartroidlib.intf;
 import android.graphics.PointF;
 import android.graphics.RectF;
 
-import com.hqyxjy.ldf.chartroidlib.component.ChartData;
 import com.hqyxjy.ldf.chartroidlib.component.ValueFormatter;
+import com.hqyxjy.ldf.chartroidlib.data.ChartData;
 
 /**
  * Created by ldf on 17/5/12.

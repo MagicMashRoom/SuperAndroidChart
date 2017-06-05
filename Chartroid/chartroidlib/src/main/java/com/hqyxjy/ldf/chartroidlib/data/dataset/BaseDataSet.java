@@ -7,7 +7,7 @@ import android.graphics.Typeface;
 import com.hqyxjy.ldf.chartroidlib.component.Entry;
 import com.hqyxjy.ldf.chartroidlib.component.ValueFormatter;
 import com.hqyxjy.ldf.chartroidlib.component.YAxis;
-import com.hqyxjy.ldf.chartroidlib.data.IDataSet;
+import com.hqyxjy.ldf.chartroidlib.data.iset.IDataSet;
 import com.hqyxjy.ldf.chartroidlib.utils.ColorFactory;
 import com.hqyxjy.ldf.chartroidlib.utils.UserInterfaceUtils;
 
@@ -95,7 +95,7 @@ public abstract class BaseDataSet <T extends Entry> implements IDataSet<T> {
      * Use this method to tell the data set that the underlying data has changed.
      */
     public void notifyDataSetChanged() {
-        calcMinMax(0, getEntryCount() - 1);
+        calcMinMax();
     }
 
 

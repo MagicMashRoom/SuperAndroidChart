@@ -1,4 +1,4 @@
-package com.hqyxjy.ldf.chartroidlib.data;
+package com.hqyxjy.ldf.chartroidlib.data.iset;
 
 import android.graphics.Typeface;
 
@@ -16,35 +16,19 @@ import java.util.List;
 public interface IDataSet<T extends Entry> {
     /** ###### ###### DATA RELATED METHODS ###### ###### */
 
-    /**
-     * returns the minimum y-value this DataSet holds
-     *
-     * @return
-     */
-    float getYMin();
+    float getXMinVal();
 
-    /**
-     * returns the maximum y-value this DataSet holds
-     *
-     * @return
-     */
-    float getYMax();
+    float getXMaxVal();
 
-    /**
-     * Returns the number of y-values this DataSet represents -> the size of the y-values array
-     * -> yvals.size()
-     *
-     * @return
-     */
+    float getYMinVal();
+
+    float getYMaxVal();
+
     int getEntryCount();
 
-    /**
-     * Calculates the minimum and maximum y value (mYMin, mYMax). From the specified starting to ending index.
-     *
-     * @param start starting index in your data list
-     * @param end   ending index in your data list
-     */
-    void calcMinMax(int start, int end);
+    void calcMinMax();
+
+    void calcYMinMax(int start, int end);
 
     /**
      * Returns the first Entry object found at the given xIndex with binary
@@ -61,13 +45,8 @@ public interface IDataSet<T extends Entry> {
 
     /**
      * Returns the first Entry object found at the given position with binary
-     * search. If the no Entry at the specified x-index is found, this method
-     * returns the index at the closest x-index. Returns null if no Entry object
-     * at that index. INFORMATION: This method does calculations at runtime. Do
-     * not over-use in performance critical situations.
-     *
+     * search. it will takeout entry from array specfic position
      * @param position
-     * @return
      */
     T getEntryForXIndex(int position);
 
@@ -164,16 +143,6 @@ public interface IDataSet<T extends Entry> {
      * @param e
      */
     boolean removeEntry(T e);
-
-    /**
-     * Adds an Entry to the DataSet dynamically.
-     * Entries are added to their appropriate index respective to it's x-index.
-     * This will also recalculate the current minimum and maximum
-     * values of the DataSet and the value-sum.
-     *
-     * @param e
-     */
-    void addEntryOrdered(T e);
 
     /**
      * Removes the first Entry (at index 0) of this DataSet from the entries array.
@@ -284,6 +253,13 @@ public interface IDataSet<T extends Entry> {
      * @param enabled
      */
     void setHighlightEnabled(boolean enabled);
+
+    /**
+     * Returns the color that is used for drawing the highlight indicators.
+     *
+     * @return
+     */
+    int getHighLightColor();
 
     /**
      * Sets the formatter to be used for drawing the values inside the chart. If

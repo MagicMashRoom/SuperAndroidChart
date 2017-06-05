@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.hqyxjy.ldf.chartroidlib.component.Entry;
 import com.hqyxjy.ldf.chartroidlib.data.ChartData;
-import com.hqyxjy.ldf.chartroidlib.data.IDataSet;
+import com.hqyxjy.ldf.chartroidlib.data.iset.IDataSet;
 
 public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Entry>>> extends ViewGroup{
     /**

@@ -20,9 +20,13 @@ public class ChartTrackHandler {
     private float offsetBottom;
 
     /**
-     * transMatrix used for touch events
+     * transMatrix used for transfrom events
      */
     protected final Matrix transMatrix = new Matrix();
+    /**
+     * touchMatrix used for touch events
+     */
+    protected final Matrix touchMatrix = new Matrix();
 
     private float chartWidth;
     private float chartHeight;
@@ -193,5 +197,17 @@ public class ChartTrackHandler {
         save.postTranslate(transX, transY);
 
         return save;
+    }
+
+    public float getChartHeight() {
+        return 0;
+    }
+
+    public Matrix getTouchMatrix() {
+        return touchMatrix;
+    }
+
+    public Matrix getTransMatrix() {
+        return transMatrix;
     }
 }
